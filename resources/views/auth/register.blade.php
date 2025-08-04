@@ -6,41 +6,46 @@
             ثبت نام در {{ config('project.project-name') }}
         </p>
 
-        <form class="space-y-5" action="{{ route("auth.register.post") }}" method="POST">
+        <form class="space-y-4" action="{{ route("auth.register.post") }}" method="POST">
             @csrf
 
             <x-forms.text-input
                 name="first_name"
                 placeholder="نام"
-                :required="true"
+                :required="false"
             />
             <x-forms.text-input
                 name="last_name"
                 placeholder="نام خانوادگی"
-                :required="true"
+                :required="false"
             />
             <x-forms.text-input
                 name="username"
                 placeholder="نام کاربری"
-                :required="true"
+                :required="false"
+            />
+            <x-forms.text-input
+                name="phone"
+                placeholder="موبایل"
+                :required="false"
             />
             <x-forms.text-input
                 name="email"
                 type="email"
                 placeholder="ایمیل"
-                :required="true"
+                :required="false"
             />
             <x-forms.text-input
                 name="password"
                 type="password"
                 placeholder="رمزعبور"
-                :required="true"
+                :required="false"
             />
             <x-forms.text-input
                 name="password_confirmation"
                 type="password"
                 placeholder="رمزعبور"
-                :required="true"
+                :required="false"
             />
 
             <button type="submit" class="submit-btn">

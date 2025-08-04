@@ -3,12 +3,12 @@
 @section("content")
     <main class="relative">
         <!-- CATEGORY -->
-        @include("dashboard.popular-categories-section")
+        @include("dashboard.sections.popular-categories-section")
         <!-- AMAZING SLIDER -->
-        @include("dashboard.amazing-offers-section")
+        @include("dashboard.sections.amazing-offers-section")
         <!-- Latest products -->
-        @include("dashboard.latest-products-section")
+        @include("dashboard.sections.latest-products-section")
         <!-- Hottest products -->
-        @include("dashboard.hottest-products-section")
+        @include("dashboard.sections.hottest-products-section")
     </main>
 @endsection

@@ -1,25 +1,14 @@
 <section class="mx-4 lg:container mt-10 lg:mt-20">
-    <!-- SECTION TITLE -->
-    <div
-        class="flex flex-col gap-y-4 xs:flex-row items-center justify-between w-full text-center xs:text-start">
-        <x-dashboard.section-heading
-            icon="#mobile"
-            title="جدیدترین محصولات"
-            subtitle="جدیدترین و بروزترین محصولات"
-        />
 
-        <div class="w-full xs:w-auto flex justify-between xs:justify-end items-center gap-x-2">
-            <x-dashboard.slider-navigation
-                prev-class="LatestProducts-prev-slide"
-                next-class="LatestProducts-next-slide"
-            />
-            <x-dashboard.button-link-with-icon
-                href=""
-                text="مشاهده همه"
-                icon="#arrow"
-            />
-        </div>
-    </div>
+    <!-- SECTION TITLE -->
+    <x-dashboard.section-header
+        href=""
+        icon="#mobile"
+        title="جدیدترین محصولات"
+        subtitle="جدیدترین و بروزترین محصولات"
+        prev-class="LatestProducts-prev-slide"
+        next-class="LatestProducts-next-slide"
+    />
 
     <!-- Latest products Slider -->
     <div class="swiper LatestProducts mt-5 w-full">
@@ -508,3 +497,4 @@
         </div>
     </div>
 </section>
+

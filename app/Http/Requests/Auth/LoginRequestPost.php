@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class LoginRequestPost extends FormRequest
@@ -11,18 +12,30 @@ class LoginRequestPost extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
     {
         return [
-            //
+            'username' => [
+                'required',
+                'string',
+                'max:50',
+                'exists:App\Models\User,username',
+                'alpha_dash',
+            ],
+            'password' => [
+                'required',
+                'string',
+                'min:8',
+                'persian_not_accept',
+            ],
         ];
     }
 }

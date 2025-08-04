@@ -10,9 +10,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get("logout", [LogoutController::class, "logout"])->name("logout");
+// Redirect authenticated users to the dashboard, unauthenticated to login
+Route::get('/', function () {
+    return redirect()->route('user.dashboard');
+})->name('home');
 
-Route::as("auth.")->group(function () {
+Route::prefix('auth')->as('auth.')->middleware('guest')->group(function () {
     Route::get("login", [LoginController::class, "index"])->name("login");
     Route::post("login", [LoginController::class, "post"])->name("login.post");
 
@@ -20,6 +23,7 @@ Route::as("auth.")->group(function () {
     Route::post("register", [RegisterController::class, "post"])->name("register.post");
 });
 
-Route::prefix("user")->group(function () {
-    Route::get("dashboard", [DashboardController::class, "index"])->name("user.dashboard");
-});
+Route::get("logout", [LogoutController::class, "logout"])->name("logout");
+
+Route::get("dashboard", [DashboardController::class, "index"])->name("user.dashboard");
+

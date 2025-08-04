@@ -18,7 +18,7 @@
 
         {{--Main Content--}}
         <div
-            class="relative w-[27rem] mx-5 flex flex-col justify-center py-12 px-4 md:px-8 bg-white dark:bg-gray-800 shadow-md rounded-xl">
+            class="relative w-[27rem] mx-5 mt-6 mb-6 flex flex-col justify-center py-12 px-4 md:px-8 bg-white dark:bg-gray-800 shadow-md rounded-xl">
             <div class="flex items-center justify-center">
                 <button class="toggle-theme absolute left-2 top-2 flex-center p-1.5 rounded-full text-gray-300">
                     <svg class="inline-block dark:hidden size-5">
