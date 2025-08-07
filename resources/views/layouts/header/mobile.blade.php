@@ -365,7 +365,7 @@
         </svg>
         <p>جستجو در <span class="font-MorabbaMedium">کارین شاپ</span></p>
     </button>
-    <!-- Search Moadal -->
+    <!-- Search Modal -->
     <div class="mobile_search-modal">
         <!-- TOP -->
         <div class="w-full flex items-center gap-x-2">

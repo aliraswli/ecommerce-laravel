@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Product
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property string $sku
  * @property string|null $description
  * @property int $price
- * @property int|null $discount_price
+ * @property int|null $discount
  * @property int $stock
  * @property bool $is_available
  * @property int $category_id
@@ -29,18 +30,16 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  *
  * @property Category $category
  * @property Collection|InventoryLog[] $inventory_logs
- * @property Collection|OrderItem[] $order_items
+ * @property Collection|OrderItem[] $orderItems
  * @property Collection|Review[] $reviews
  *
  * @package App\Models
  */
 class Product extends Model
 {
-    protected $table = 'products';
-
     protected $casts = [
         'price' => 'int',
-        'discount_price' => 'int',
+        'discount' => 'double',
         'stock' => 'int',
         'is_available' => 'bool',
         'category_id' => 'int'
@@ -51,7 +50,7 @@ class Product extends Model
         'sku',
         'description',
         'price',
-        'discount_price',
+        'discount',
         'stock',
         'is_available',
         'category_id'
@@ -67,7 +66,7 @@ class Product extends Model
         return $this->hasMany(InventoryLog::class);
     }
 
-    public function order_items()
+    public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
@@ -82,15 +81,9 @@ class Product extends Model
         return $this->morphMany(File::class, 'fileable');
     }
 
-    public function discounts()
+    public function file(): File|MorphOne
     {
-        return $this->hasMany(Discount::class);
-    }
-
-    public function activeDiscount()
-    {
-        return $this->hasOne(Discount::class)
-            ->where('start_date', '<=', now())
-            ->where('end_date', '>=', now());
+        return $this->morphOne(File::class, 'fileable');
     }
 }
+

@@ -18,8 +18,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $product_id
  * @property int $quantity
  * @property int $unit_price
- * @property int $subtotal
- * @property int|null $discount_applied
+ * @property int $total_price
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  *
@@ -30,15 +29,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class OrderItem extends Model
 {
-	protected $table = 'order_items';
-
 	protected $casts = [
 		'order_id' => 'int',
 		'product_id' => 'int',
 		'quantity' => 'int',
 		'unit_price' => 'int',
-		'subtotal' => 'int',
-		'discount_applied' => 'int'
+		'total_price' => 'int',
 	];
 
 	protected $fillable = [
@@ -46,8 +42,7 @@ class OrderItem extends Model
 		'product_id',
 		'quantity',
 		'unit_price',
-		'subtotal',
-		'discount_applied'
+		'total_price',
 	];
 
 	public function order(): Order|BelongsTo

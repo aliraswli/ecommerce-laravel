@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 /**
  * Class Category
@@ -31,36 +32,36 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  */
 class Category extends Model
 {
-	protected $table = 'categories';
+    protected $table = 'categories';
 
-	protected $casts = [
-		'parent_id' => 'int'
-	];
+    protected $casts = [
+        'parent_id' => 'int'
+    ];
 
-	protected $fillable = [
-		'name',
-		'slug',
-		'description',
-		'parent_id'
-	];
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'parent_id'
+    ];
 
-	public function category(): Category|BelongsTo
+    public function category(): Category|BelongsTo
     {
-		return $this->belongsTo(Category::class, 'parent_id');
-	}
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
 
-	public function categories()
-	{
-		return $this->hasMany(Category::class, 'parent_id');
-	}
-
-	public function products()
-	{
-		return $this->hasMany(Product::class);
-	}
-
-    public function files(): File|MorphMany
+    public function categories()
     {
-        return $this->morphMany(File::class, 'fileable');
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function file(): File|MorphOne
+    {
+        return $this->morphOne(File::class, 'fileable');
     }
 }
