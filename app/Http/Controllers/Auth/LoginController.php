@@ -40,6 +40,6 @@ class LoginController extends Controller
             return back()->withErrors(["general" => "مشکلی پیش آمده است."]);
         }
 
-        return redirect()->route("user.dashboard");
+        return redirect()->route("dashboard");
     }
 }

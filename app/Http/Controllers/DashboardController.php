@@ -2,50 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
-use App\Services\Product\ProductPriceService;
-use Carbon\Carbon;
+use App\Services\DashboardService;
 
 class DashboardController extends Controller
 {
-    protected ProductPriceService $priceService;
+    protected DashboardService $service;
 
-    public function __construct(ProductPriceService $priceService)
+    public function __construct(DashboardService $service)
     {
-        $this->priceService = $priceService;
+        $this->service = $service;
     }
 
     public function index()
     {
-        $mainCategories = Category::query()
-            ->whereNull('parent_id')
-            ->take(7)
-            ->with("file")
-            ->get();
+        $title = "داشبورد";
+        $popularCategories = $this->service->getPopularCategories();
+        $latestProducts = $this->service->getLatestProducts();
 
-        $categories = Category::query()
-            ->whereNull('parent_id')
-            ->with("categories")
-            ->get();
-
-        $latestProducts = Product::query()
-            ->with("file")
-            ->where("is_available", true)
-            ->latest()
-            ->limit(6)
-            ->get();
-
-        foreach ($latestProducts as $item) {
-            $item->final_price = $this->priceService->calculateFinalPrice($item);
-        }
-
-        return view('dashboard.index', [
-            "title" => "داشبورد",
-            "mainCategories" => $mainCategories,
-            "categories" => $categories,
-            "latestProducts" => $latestProducts,
-            "hottestProducts" => $latestProducts,
-        ]);
+        return view('dashboard.index', compact(
+            'title',
+            'popularCategories',
+            'latestProducts'
+        ));
     }
 }

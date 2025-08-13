@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
             if ($user) {
                 Log::log("کاربر ثبت نام شده است.", $data);
-                return redirect()->route('auth.login');
+                return redirect()->route('login.index');
             } else {
                 $err = "مشکلی پیش آمده است.";
                 return back()->withErrors(['general' => $err]);

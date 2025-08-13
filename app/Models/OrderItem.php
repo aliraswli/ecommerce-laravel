@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int $order_id
  * @property int $product_id
- * @property int $quantity
+ * @property int $qty
  * @property int $unit_price
  * @property int $total_price
  * @property Carbon|null $created_at
@@ -32,7 +32,7 @@ class OrderItem extends Model
 	protected $casts = [
 		'order_id' => 'int',
 		'product_id' => 'int',
-		'quantity' => 'int',
+		'qty' => 'int',
 		'unit_price' => 'int',
 		'total_price' => 'int',
 	];
@@ -40,7 +40,7 @@ class OrderItem extends Model
 	protected $fillable = [
 		'order_id',
 		'product_id',
-		'quantity',
+		'qty',
 		'unit_price',
 		'total_price',
 	];

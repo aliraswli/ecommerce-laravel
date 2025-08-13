@@ -6,7 +6,7 @@
             ثبت نام در {{ config('project.project-name') }}
         </p>
 
-        <form class="space-y-4" action="{{ route("auth.register.post") }}" method="POST">
+        <form class="space-y-4" action="{{ route("register.post") }}" method="POST">
             @csrf
 
             <x-forms.text-input
@@ -54,7 +54,7 @@
 
         </form>
 
-        <a href="{{ route("auth.login") }}" class="mt-10 flex flex-col text-center text-sm">
+        <a href="{{ route("login.index") }}" class="mt-10 flex flex-col text-center text-sm">
             حساب کاربری دارم, ورود به فروشگاه
         </a>
     </div>

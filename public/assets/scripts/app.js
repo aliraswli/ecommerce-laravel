@@ -118,9 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', event => {
             const input = event.target.closest('button').querySelector('.custom-input');
             const value = parseInt(input.value) || 0;
-            if (value < 20) {
-                input.value = value + 1;
-            }
+            console.log(input.value);
+
+            input.value = value + 1;
         });
     });
 
@@ -129,9 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', event => {
             const input = event.target.closest('button').querySelector('.custom-input');
             const value = parseInt(input.value) || 0;
-            if (value > 0) {
-                input.value = value - 1;
-            }
+            input.value = value - 1;
         });
     });
 });

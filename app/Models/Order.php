@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use App\Enums\OrderStatus;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -31,29 +32,30 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Order extends Model
 {
-	protected $table = 'orders';
+    protected $table = 'orders';
 
-	protected $casts = [
-		'user_id' => 'int',
-		'total_amount' => 'int'
-	];
+    protected $casts = [
+        'user_id' => 'int',
+        'total_amount' => 'int',
+        'status' => OrderStatus::class,
+    ];
 
-	protected $fillable = [
-		'user_id',
-		'total_amount',
-		'shipping_address',
-		'payment_method',
-		'tracking_code',
-		'status'
-	];
+    protected $fillable = [
+        'user_id',
+        'total_amount',
+        'shipping_address',
+        'payment_method',
+        'tracking_code',
+        'status'
+    ];
 
-	public function user(): User|BelongsTo
+    public function user(): User|BelongsTo
     {
-		return $this->belongsTo(User::class);
-	}
+        return $this->belongsTo(User::class);
+    }
 
-	public function order_items()
-	{
-		return $this->hasMany(OrderItem::class);
-	}
+    public function order_items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

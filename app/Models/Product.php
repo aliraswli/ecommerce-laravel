@@ -22,7 +22,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property string|null $description
  * @property int $price
  * @property int|null $discount
- * @property int $stock
+ * @property int $qty
  * @property bool $is_available
  * @property int $category_id
  * @property Carbon|null $created_at
@@ -32,6 +32,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  * @property Collection|InventoryLog[] $inventory_logs
  * @property Collection|OrderItem[] $orderItems
  * @property Collection|Review[] $reviews
+ * @property File|MorphMany $files
+ * @property File|MorphOne $file
  *
  * @package App\Models
  */
@@ -40,7 +42,7 @@ class Product extends Model
     protected $casts = [
         'price' => 'int',
         'discount' => 'double',
-        'stock' => 'int',
+        'qty' => 'int',
         'is_available' => 'bool',
         'category_id' => 'int'
     ];
@@ -51,7 +53,7 @@ class Product extends Model
         'description',
         'price',
         'discount',
-        'stock',
+        'qty',
         'is_available',
         'category_id'
     ];
@@ -86,4 +88,3 @@ class Product extends Model
         return $this->morphOne(File::class, 'fileable');
     }
 }
-

@@ -25,7 +25,7 @@
 
 @include("layouts.icons")
 
-@includeUnless(isset($hiddenHeader), "layouts.header.index")
+@includeUnless(isset($hiddenHeader), "layouts.header")
 
 @yield("content")
 
@@ -34,7 +34,6 @@
 {{-- Overlay --}}
 <div class="overlay"></div>
 <div class="search-overlay"></div>
-
 {{-- Js Scripts --}}
 <script src="{{ asset("assets/swiper/swiper.js") }}"></script>
 <script src="{{ asset("assets/scripts/app.js") }}"></script>

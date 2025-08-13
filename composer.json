@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "diglactic/laravel-breadcrumbs": "^10.0",
         "hekmatinasser/verta": "^8.5",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
@@ -32,8 +33,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Support/Helpers/product_helpers.php",
-            "app/Support/Helpers/user_helpers.php"
+            "app/Helpers/helpers.php",
+            "app/Helpers/product_helper.php"
         ]
     },
     "autoload-dev": {

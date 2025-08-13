@@ -12,7 +12,7 @@
     <div
         class="flex items-center justify-evenly flex-wrap mt-12 child:mb-8 gap-x-8 child:items-center child:flex-col child:duration-300 child:cursor-pointer child:gap-y-1 child:text-gray-800 child:dark:text-gray-300 child:relative">
 
-        @foreach($mainCategories as $category)
+        @foreach($popularCategories as $category)
             {{--{{ route('shop', ['category' => $category->slug]) }}--}}
             <a href="" class="group flex">
                 <img
