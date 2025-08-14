@@ -2074,6 +2074,11 @@ img {
     background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
 }
 
+.disabled {
+    background-color: #9ca3af;
+    color: #1b1b18;
+}
+
 .bg-blue-500\/10 {
     background-color: rgb(59 130 246 / 0.1);
 }
@@ -6083,4 +6088,54 @@ img {
 
 .rtl\:space-x-reverse:where([dir="rtl"], [dir="rtl"] *) > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 1;
+}
+
+
+.message-wrapper {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.message-wrapper.has-message {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 1.25rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.success-message {
+    background-color: #d1fae5;
+    color: #065f46;
+    padding: 1.25rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.info-message {
+    background-color: #fef3c7;
+    color: #78350f;
+    padding: 1.25rem 1rem;
+    border-radius: 0.25rem;
+}
+
+/* Success */
+.success-message:is(.dark *) {
+    background-color: #0D542B;
+    color: #B9F8CF;
+}
+
+/* Info */
+.info-message:is(.dark *) {
+    background-color: #733E0A;
+    color: #FFF085;
+}
+
+/* Error */
+.error-message:is(.dark *) {
+    background-color: #82181A;
+    color: #FFC9C9;
 }

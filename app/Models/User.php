@@ -9,6 +9,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -69,4 +70,9 @@ class User extends Authenticatable
     {
 		return $this->hasMany(Review::class);
 	}
+
+    public function cart(): HasOne|User
+    {
+        return $this->hasOne(Cart::class);
+    }
 }

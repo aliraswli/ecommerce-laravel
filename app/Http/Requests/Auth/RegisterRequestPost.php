@@ -26,13 +26,13 @@ class RegisterRequestPost extends FormRequest
             'first_name' => [
                 'required',
                 'string',
-                'max:255',
+                'max:56',
                 'persian_alpha',
             ],
             'last_name' => [
                 'required',
                 'string',
-                'max:255',
+                'max:56',
                 'regex:/^[\p{Arabic}\s]+$/u',
             ],
             'email' => [

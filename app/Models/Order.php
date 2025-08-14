@@ -7,10 +7,10 @@
 namespace App\Models;
 
 use App\Enums\OrderStatus;
+use App\Enums\PaymentMethod;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Order
@@ -18,11 +18,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id
  * @property int $user_id
  * @property int $total_amount
- * @property string $shipping_address
- * @property string $payment_method
+ * @property int $address_id
+ * @property PaymentMethod $payment_method
  * @property string|null $tracking_code
- * @property string $status
- * @property Carbon|null $created_at
+ * @property OrderStatus $status
+ * @property Carbon $created_at
  * @property Carbon|null $updated_at
  *
  * @property User $user
@@ -37,19 +37,21 @@ class Order extends Model
     protected $casts = [
         'user_id' => 'int',
         'total_amount' => 'int',
+        'address_id' => 'int',
         'status' => OrderStatus::class,
+        'payment_status' => PaymentMethod::class,
     ];
 
     protected $fillable = [
         'user_id',
         'total_amount',
-        'shipping_address',
+        'address_id',
         'payment_method',
         'tracking_code',
         'status'
     ];
 
-    public function user(): User|BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

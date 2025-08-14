@@ -22,7 +22,7 @@
 
     {{--  Confirm and complete the order  --}}
     <a
-        href="{{ route("checkout.index") }}"
+        href="{{ route("payment.post") }}"
         class="w-full mt-4 flex items-center gap-x-1 justify-center bg-blue-500 text-white hover:bg-blue-600 transition-all rounded-lg shadow py-2"
     >
         تایید و تکمیل سفارش

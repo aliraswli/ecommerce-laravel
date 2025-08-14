@@ -3,43 +3,24 @@
 namespace App\Http\Controllers\Cart;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
 use App\Models\CartItem;
+use App\Services\CartService;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function index()
     {
-        $title = "سبد خرید";
-        $cart = Cart::query()
-            ->where('user_id', Auth::id())
-            ->firstOrFail();
+        $user = Auth::user();
+        $cartService = new CartService($user->cart);
 
-        $cartItems = CartItem::query()
-            ->where("cart_id", $cart->id)
-            ->with("product.file")
-            ->get();
-
-        $totalPrice = $cartItems->sum(function (CartItem $item) {
-            return $item->product->price * $item->qty;
-        });
-
-        $totalDiscount = $cartItems->sum(function (CartItem $item) {
-            $price = $item->product->price;
-            $discountPercent = $item->product->discount ?? 0;
-            return ($price * ($discountPercent / 100)) * $item->qty;
-        });
-
-        $finalPrice = $totalPrice - $totalDiscount;
-
-        return view('cart.index', compact(
-            "title",
-            "cartItems",
-            "totalPrice",
-            "totalDiscount",
-            "finalPrice",
-        ));
+        return view('cart.index', [
+            "title" => "سبد خرید",
+            "cartItems" => $cartService->items(),
+            "totalPrice" => $cartService->totalPrice(),
+            "totalDiscount" => $cartService->totalDiscount(),
+            "finalPrice" => $cartService->finalPrice(),
+        ]);
     }
 
     public function increment($id)
@@ -49,7 +30,7 @@ class CartController extends Controller
         $item->qty += 1;
         $item->save();
 
-        return redirect()->back()->withFragment('item-'.$id);
+        return redirect()->back()->withFragment('item-' . $id);
     }
 
     public function decrement($id)
@@ -64,6 +45,6 @@ class CartController extends Controller
             $item->delete();
         }
 
-        return redirect()->back()->withFragment('item-'.$id);
+        return redirect()->back()->withFragment('item-' . $id);
     }
 }

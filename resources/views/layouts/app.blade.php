@@ -34,6 +34,10 @@
 {{-- Overlay --}}
 <div class="overlay"></div>
 <div class="search-overlay"></div>
+
+
+@stack('scripts') {{-- Scripts will be pushed here --}}
+
 {{-- Js Scripts --}}
 <script src="{{ asset("assets/swiper/swiper.js") }}"></script>
 <script src="{{ asset("assets/scripts/app.js") }}"></script>

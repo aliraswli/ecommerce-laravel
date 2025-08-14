@@ -25,14 +25,6 @@ class DashboardService
             ->get();
     }
 
-    function getParentCategories(): Category|Collection
-    {
-        return Category::query()
-            ->whereNull('parent_id')
-            ->with("categories")
-            ->get();
-    }
-
     function getLatestProducts(): Product|Collection
     {
         $result = Product::query()

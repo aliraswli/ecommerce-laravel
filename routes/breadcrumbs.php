@@ -19,3 +19,9 @@ Breadcrumbs::for('checkout.index', function (BreadcrumbTrail $trail) {
     $trail->parent('cart.index');
     $trail->push('آدرس و زمان ارسال', route('checkout.index'));
 });
+
+// Payment
+Breadcrumbs::for('payment.index', function (BreadcrumbTrail $trail) {
+    $trail->parent('cart.index');
+    $trail->push('پرداخت نهایی', route('payment.index'));
+});
