@@ -9,17 +9,16 @@ use Diglactic\Breadcrumbs\Breadcrumbs;
 
 class Breadcrumb extends Component
 {
-    /**
-     * The breadcrumb route name.
-     */
     public string $route;
+    public array $params;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $route)
+    public function __construct(string $route, array $params = [])
     {
         $this->route = $route;
+        $this->params = $params;
     }
 
     /**
@@ -27,7 +26,7 @@ class Breadcrumb extends Component
      */
     public function render(): View|Closure|string
     {
-        $breadcrumbs = Breadcrumbs::generate($this->route);
+        $breadcrumbs = Breadcrumbs::generate($this->route, ...$this->params);
 
         return view('components.breadcrumb', [
             'breadcrumbs' => $breadcrumbs

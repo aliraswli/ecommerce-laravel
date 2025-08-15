@@ -13,7 +13,7 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view("auth.register", [
+        return view("web.auth.register", [
             "title" => "ثبت نام",
             "hiddenHeader" => true,
             "hiddenFooter" => true,
@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
             if ($user) {
                 Log::log("کاربر ثبت نام شده است.", $data);
-                return redirect()->route('login.index');
+                return redirect()->route('auth.login.index');
             } else {
                 $err = "مشکلی پیش آمده است.";
                 return back()->withErrors(['general' => $err]);

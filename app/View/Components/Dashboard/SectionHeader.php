@@ -8,7 +8,6 @@ use Illuminate\View\Component;
 
 class SectionHeader extends Component
 {
-
     public string $href;
     public ?string $icon;
     public string $title;

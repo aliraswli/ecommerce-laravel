@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
@@ -39,6 +40,8 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
  */
 class Product extends Model
 {
+    protected $appends = ['is_favorite'];
+
     protected $casts = [
         'price' => 'int',
         'discount' => 'double',
@@ -86,5 +89,15 @@ class Product extends Model
     public function file(): File|MorphOne
     {
         return $this->morphOne(File::class, 'fileable');
+    }
+
+    public function favoriteBy(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'favorites');
+    }
+
+    public function getIsFavoriteAttribute(): bool
+    {
+        return auth()->check() && $this->favoriteBy->contains(auth()->id());
     }
 }

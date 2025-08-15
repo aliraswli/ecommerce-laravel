@@ -15,7 +15,7 @@ class AccountController extends Controller
     {
         $user = Auth::user();
 
-        return view('account.index', compact('user'));
+        return view('web.account.index', compact('user'));
     }
 
     public function post(AccountRequestPost $request)

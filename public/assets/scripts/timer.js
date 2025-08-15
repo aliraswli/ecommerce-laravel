@@ -7,14 +7,18 @@ const THREE_HOURS = 3 * 60 * 60 * 1000;
 
 // Timer functions
 function updateDisplay(timeRemaining) {
+    // Prevent negative values
+    if (timeRemaining < 0) timeRemaining = 0;
+
     const totalSeconds = Math.floor(timeRemaining / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
 
-    secondElem.textContent = seconds.toString().padStart(2, '0');
-    minuteElem.textContent = minutes.toString().padStart(2, '0');
-    hourElem.textContent = hours.toString().padStart(2, '0');
+    // Make sure elements exist before updating
+    if (hourElem) hourElem.textContent = hours.toString().padStart(2, '0');
+    if (minuteElem) minuteElem.textContent = minutes.toString().padStart(2, '0');
+    if (secondElem) secondElem.textContent = seconds.toString().padStart(2, '0');
 }
 
 function startTimer(duration) {

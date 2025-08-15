@@ -14,7 +14,7 @@ class CartController extends Controller
         $user = Auth::user();
         $cartService = new CartService($user->cart);
 
-        return view('cart.index', [
+        return view('web.cart.index', [
             "title" => "سبد خرید",
             "cartItems" => $cartService->items(),
             "totalPrice" => $cartService->totalPrice(),

@@ -25,3 +25,18 @@ Breadcrumbs::for('payment.index', function (BreadcrumbTrail $trail) {
     $trail->parent('cart.index');
     $trail->push('پرداخت نهایی', route('payment.index'));
 });
+
+// Payment
+Breadcrumbs::for('about-us', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('درباره ما', route('static.about-us'));
+});
+
+Breadcrumbs::for('shop', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('فروشگاه', route('product.index'));
+});
+Breadcrumbs::for('product-details', function (BreadcrumbTrail $trail, $id) {
+    $trail->parent('shop');
+    $trail->push('جزییات محصول', route('product.details', $id));
+});

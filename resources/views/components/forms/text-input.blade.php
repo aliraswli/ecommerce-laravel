@@ -17,7 +17,9 @@
         />
     </div>
 
-    @error($name)
-    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-    @enderror
+    @if(isset($errors))
+        @error($name)
+        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+    @endif
 </div>

@@ -13,7 +13,7 @@ class OrderController extends Controller
         $orders = Order::query()
             ->where("user_id", auth()->user()->id)->get();
 
-        return view("account.orders.index", compact(
+        return view("web.account.orders.index", compact(
             "orders",
         ));
     }

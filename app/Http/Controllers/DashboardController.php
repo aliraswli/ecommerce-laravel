@@ -19,7 +19,7 @@ class DashboardController extends Controller
         $popularCategories = $this->service->getPopularCategories();
         $latestProducts = $this->service->getLatestProducts();
 
-        return view('dashboard.index', compact(
+        return view('web.dashboard.index', compact(
             'title',
             'popularCategories',
             'latestProducts'

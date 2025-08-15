@@ -15,12 +15,12 @@ class AddressController extends Controller
     {
         $addresses = Auth::user()->addresses;
 
-        return view("account.address.index", compact("addresses"));
+        return view("web.account.address.index", compact("addresses"));
     }
 
     public function create()
     {
-        return view("account.address.create");
+        return view("web.account.address.create");
     }
 
     public function store(StoreAddressRequest $request)

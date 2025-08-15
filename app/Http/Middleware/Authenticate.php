@@ -10,7 +10,7 @@ class Authenticate extends Middleware
     {
         if (!$request->expectsJson()) {
             // Point to your existing login route
-            return route('login.index');
+            return route('auth.login.index');
         }
         return null;
     }

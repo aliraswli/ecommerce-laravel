@@ -14,7 +14,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view("auth.login", [
+        return view("web.auth.login", [
             "title" => "ورود",
             "hiddenHeader" => true,
             "hiddenFooter" => true,

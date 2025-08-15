@@ -25,7 +25,7 @@ class PaymentController extends Controller
             return redirect()->route('cart.index');
         }
 
-        return view('payment.index', [
+        return view('web.payment.index', [
             "title" => "سبد خرید",
             "cartItems" => $cartService->items(),
             "totalPrice" => $cartService->totalPrice(),

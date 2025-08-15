@@ -475,7 +475,7 @@ return [
     |
     */
 
-    // 'shop' => [
+    // 'products' => [
     //     'path' => app_path(),
     //     'namespace' => 'App',
     //     'snake_attributes' => false,
